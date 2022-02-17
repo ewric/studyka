@@ -1,0 +1,44 @@
+Tab 1 métodos de estudo
+
+(   ) Criar thumbnails para vários métodos de estudo
+(   ) Ao clicar nas thumbnails, abrir ion-slide
+(   ) Adicionar a cada ion-slide a explicação sobre aquele método de estudo
+
+--------------------------------------------------------------
+Tab 2 - meu studyka (nome do bixinho)
+
+( ok ) Criar um giff utilizando 3 imagens svg, este giff é o bixinho.
+( ok ) Modificar o código para que possam ser utilizados vários bixinhos.
+(   ) Criar uma classe contendo as informacoes do bixinho do usuário. E exibir as informações e barras necessárias de forma adequada.
+O bixinho terá barra de fome.
+O bixinho terá barra de felicidade.
+O bixinho terá sua experiência exibida com 2 casas decimais.
+O bixinho terá seu level exibido.
+O dinheiro será exibido nesta tela.
+A barra de fome diminui com o passar do tempo.
+A barra de fome aumenta quando se compra comida.
+A barra de felicidade aumenta quando se compra brinquedo ou quando se pratica bons hábitos.
+A barra de felicidade diminui como tempo e quando se pratica maus hábitos.
+A barra de experiência aumenta junto da barra de felicidade quando esta está acima de 80%.
+O level aumenta quando o limite de experiência daquele level é alcançado.
+O limite de experiência daquele level deve ser aumentado de acordo com o aumento do level.
+Pena de morte: Se o bixinho zerar a barra de fome ou de felicidade, ocorre a pena de morte. Nela, o bixinho perde 2 levels e a experiência é zerada. Se o bixinho voltar para o level 1, o dinheiro retorna ao valor inicial.
+No início do jogo, um valor de dinheiro inicial é alocado ao usuário.
+O dinheiro aumenta quando bons hábitos são praticados.
+--------------------------------------------------------------Tab 3 - Registro de bons hábitos e maus hábitos
+(   ) Botão para registrar um bom hábito
+(   ) Botão para registrar máu hábito
+(   ) Exibição dos bons hábitos e maus hábitos
+(   ) Bons hábitos e maus hábitos clicáveis para se poder executar as funções da classe do bixinho.
+
+--------------------------------------------------------------
+Tab 4 - loja de itens e brinquedos
+(   ) Criar esta tab de forma a funcionar como as demais.
+(   ) Exibir dinheiro nesta tela em local apropriado.
+(   ) Criar icones de comida e brinquedos com o valor ao lado.
+(   ) Icones clicaveis executando funcao de alimentacao o de aumento de felicidade da classe bixinho.
+
+--------------------------------------------------------------
+
+
+
