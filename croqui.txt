@@ -1,3 +1,6 @@
+(   ) Ajeitar o símbolo e nome das tabs no menu de tabs.
+--------------------------------------------------------------
+
 Tab 1 métodos de estudo
 
 (   ) Criar thumbnails para vários métodos de estudo
@@ -8,7 +11,7 @@ Tab 1 métodos de estudo
 Tab 2 - meu studyka (nome do bixinho)
 
 ( ok ) Criar um giff utilizando 3 imagens svg, este giff é o bixinho.
-( ok ) Modificar o código para que possam ser utilizados vários bixinhos.
+( ok ) Modificar o código para que possam ser utilizados vários aparências de bixinhos.
 (   ) Criar uma classe contendo as informacoes do bixinho do usuário. E exibir as informações e barras necessárias de forma adequada.
 O bixinho terá barra de fome.
 O bixinho terá barra de felicidade.
@@ -27,7 +30,7 @@ No início do jogo, um valor de dinheiro inicial é alocado ao usuário.
 O dinheiro aumenta quando bons hábitos são praticados.
 --------------------------------------------------------------Tab 3 - Registro de bons hábitos e maus hábitos
 (   ) Botão para registrar um bom hábito
-(   ) Botão para registrar máu hábito
+(   ) Botão para registrar mau hábito
 (   ) Exibição dos bons hábitos e maus hábitos
 (   ) Bons hábitos e maus hábitos clicáveis para se poder executar as funções da classe do bixinho.
 
