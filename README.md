@@ -9,3 +9,4 @@ Quando praticar maus hábitos, o bixinho ficará mais triste.
 A ideia é subir o nível do bixinho mantendo-o feliz e alimentado.
 
 O app está sendo desenvolvido em IONIC+Angular.
+. . . . . . .  ..  . . . 
