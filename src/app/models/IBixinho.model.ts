@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 export class Bixinho {
   nome = "Meu Bixinho";
-  inapetencia = 60; //valor em %
-  felicidade = 60; //valor em %
-  experiencia = 0; //valor em %
+  inapetencia = 0.6;
+  felicidade = 0.6;
+  experiencia = 50;
   level = 1;
   experiencia_proximo_level = 100;
-  experiencia_porcentagem = this.experiencia/this.experiencia_proximo_level;
+  experiencia_normalizada = (this.experiencia/this.experiencia_proximo_level);
+  experiencia_porcentagem = ((this.experiencia/this.experiencia_proximo_level*100).toFixed(2));
   dinheiro = 150;
   aparencia = 1;
   ultimaReducaoInapetencia: Date;
