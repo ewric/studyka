@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>
       <div class="ion-text-wrap">
-        Meu Studyka aqui eu quero um nome grande
+        {{bixinho.nome}}
       </div>
     </ion-title>
   </ion-toolbar>
@@ -16,10 +16,10 @@
       <ion-col size="12"> <img [src]="src" style="max-width: 100%"> </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col size="4">
-        <ion-progress-bar [value]="bixinho.experiencia_normalizada"></ion-progress-bar>
+      <ion-col size="4" style="padding-top: 3vh;">
+        <ion-progress-bar [value]="bixinho.experiencia_normalizada" color="dark"></ion-progress-bar>
       </ion-col>
-      <ion-col size="3">
+      <ion-col size="3" style="padding-top: 2.5vh;">
         <div >
           <ion-badge color="medium" >{{bixinho.experiencia_porcentagem}}%</ion-badge>
         </div>
@@ -32,19 +32,48 @@
         </div>
       </ion-col>
     </ion-row>
-    alinhar essas barras de cima
     <ion-row>
       <ion-col size="4">Fome</ion-col>
-      <ion-col size="8"> <ion-progress-bar [value]="bixinho.inapetencia" color="tertiary"></ion-progress-bar> </ion-col>
+      <ion-col size="8"> <ion-progress-bar [value]="bixinho.inapetencia" color="tertiary"> </ion-progress-bar> </ion-col>
     </ion-row>
     <ion-row>
       <ion-col size="4">Felicidade</ion-col>
       <ion-col size="8"> <ion-progress-bar [value]="bixinho.felicidade" color="success"></ion-progress-bar> </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col size="12"></ion-col>
+      <ion-col size="12">
+        <div class="ion-text-end">
+          <ion-badge color="warning">
+             <ion-icon name="wallet-outline" style="font-size: 18px;"></ion-icon>
+             <ion-label style="font-size: 3vh;"> $ {{bixinho.dinheiro}}</ion-label>
+            </ion-badge>
+        </div>
+      </ion-col>
     </ion-row>
-    colocar botoes bom habito, mau habito, comida, brinquedo.
+    <ion-row>
+      <ion-col size="6">
+       <ion-button (click)="bixinho.bomHabito()" color="success">
+        <p>Bom Hábito</p>
+       </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button (click)="bixinho.mauHabito()" color="danger">
+          <p>Mau hábito</p>
+        </ion-button>
+       </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4">
+        <ion-button (click)="bixinho.comprouComida()" color="tertiary">
+          <ion-icon name="fast-food-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button (click)="bixinho.comprouBrinquedo()" color="tertiary">
+          <ion-icon name="dice-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
   </ion-grid>
 
 
