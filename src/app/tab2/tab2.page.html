@@ -52,36 +52,36 @@
     </ion-row>
     <ion-row>
       <ion-col size="6">
-       <ion-button (click)="bixinho.bomHabito()" color="success">
-        <p>Bom Hábito</p>
+       <ion-button size="small" (click)="bixinho.bomHabito()" style="--background:rgb(0, 148, 32)">
+        <ion-label style="font-weight: bolder; font-size: small;">Bom Hábito</ion-label>
        </ion-button>
       </ion-col>
       <ion-col size="6">
-        <ion-button (click)="bixinho.mauHabito()" color="danger">
-          <p>Mau hábito</p>
+        <ion-button size="small" (click)="bixinho.mauHabito()" color="danger">
+          <ion-label style="font-weight: bolder; font-size: small;">Mau hábito</ion-label>
         </ion-button>
        </ion-col>
     </ion-row>
     <ion-row>
       <ion-col size="4">
         <ion-button (click)="bixinho.comprouComida()" color="tertiary">
-          <ion-icon name="fast-food-outline"></ion-icon>
+          <ion-icon name="fast-food-outline" style="padding-inline-end: 5px;"></ion-icon>
+          ${{bixinho.CUSTO_COMIDA}}
         </ion-button>
       </ion-col>
       <ion-col size="4">
         <ion-button (click)="bixinho.comprouBrinquedo()" color="tertiary">
-          <ion-icon name="dice-outline"></ion-icon>
+          <ion-icon name="dice-outline" style="padding-inline-end: 5px;"></ion-icon>
+          ${{bixinho.CUSTO_BRINQUEDO}}
+        </ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button (click)="bixinho.verData()" >
+          <ion-icon name="time-outline"></ion-icon>
         </ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
-
-
-
-
-
-
-
-
-
+proximo passo e fazer o botao de renomear o bixinho. Este botao deve abrir um aviso
+com um campo input para digitar o novo nome, o botao confirma e cancel.
 </ion-content>

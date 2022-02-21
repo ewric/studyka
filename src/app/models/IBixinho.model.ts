@@ -1,11 +1,13 @@
+/* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable @typescript-eslint/naming-convention */
 export class Bixinho {
   private BRINQUEDO = 0.05; //quanto que um brinquedo dá de felicidade
   private COMIDA = 0.05; //quanto que uma comida dá de felicidade
   private DINHEIRO_INICIAL = 150; //dinheiro em que se inicia o jogo
   private EXPERIENCIA_PRIMEIRO_LEVEL = 100;
-  CUSTO_COMIDA = 25;
-  CUSTO_BRINQUEDO = 25;
+  private AUMENTO_DE_EXPERIENCIA_POR_LEVEL = 40;
+  CUSTO_COMIDA = 15;
+  CUSTO_BRINQUEDO = 15;
 
   nome = "Meu Bixinho";
   inapetencia = 0.6;
@@ -17,30 +19,30 @@ export class Bixinho {
   experiencia_porcentagem = ((this.experiencia/this.experiencia_proximo_level*100).toFixed(2));
   dinheiro = this.DINHEIRO_INICIAL;
   aparencia = 1;
-  ultimaReducaoInapetencia = new Date(2022,01,18);
+  ultimaReducaoInapetencia = new Date();
 
 
 
 
   constructor() {}
 //###################FUNCOES QUE AUMENTAM OU DIMINUEM ALGUMA VARIAVEL################################
-  aumentaInapetencia(aumento: number) {
+  private aumentaInapetencia(aumento: number) {
     this.inapetencia += aumento;
     if(this.inapetencia >= 1) this.inapetencia = 1;
   }
-  aumentaFelicidade(aumento: number) {
+  private aumentaFelicidade(aumento: number) {
     this.felicidade += aumento;
     if(this.felicidade >= 1) this.felicidade = 1;
     this.aumentaExperiencia();
   }
-  aumentaDinheiro() {
+  private aumentaDinheiro() {
     this.dinheiro += Math.round(Math.random()*10 + 10);
   }
-  diminuiInapetencia(diminuicao: number) {
+  private diminuiInapetencia(diminuicao: number) {
     this.inapetencia -= diminuicao;
     if(this.inapetencia <= 0) this.morte();
   }
-  diminuiFelicidade(diminuicao: number) {
+  private diminuiFelicidade(diminuicao: number) {
     this.felicidade -= diminuicao;
     if(this.felicidade<= 0) this.felicidade = 0;
   }
@@ -49,34 +51,35 @@ export class Bixinho {
 
 
 //###################FUNCOES RELACIONADAS A LEVEL################################
-  aumentaExperiencia() {
-    if(this.inapetencia >= 0.8 && this.felicidade >= 0.6) {
+  private aumentaExperiencia() {
+    if(this.inapetencia >= 0.5 && this.felicidade >= 0.5) {
       this.experiencia += Math.round(Math.random()*10)+10;
       this.atualizaExperiencia();
     }
     if(this.experiencia>=this.experiencia_proximo_level) this.passouDeLevel();
   }
-  atualizaExperiencia() {
+  private atualizaExperiencia() {
     this.experiencia_normalizada = (this.experiencia/this.experiencia_proximo_level);
     this.experiencia_porcentagem = ((this.experiencia/this.experiencia_proximo_level*100).toFixed(2));
   }
-  atualizaExperienciaProximoLevel() {
-    this.experiencia_proximo_level = 100 + this.level*40;
+  private atualizaExperienciaProximoLevel() {
+    this.experiencia_proximo_level = this.EXPERIENCIA_PRIMEIRO_LEVEL +
+    this.level*this.AUMENTO_DE_EXPERIENCIA_POR_LEVEL;
   }
-  passouDeLevel() {
+  private passouDeLevel() {
     this.level += 1;
     this.experiencia = 0;
     this.atualizaExperienciaProximoLevel();
     this.atualizaExperiencia();
   }
-  morte() {
+  private morte() {
     this.inapetencia = 0.6;
     this.felicidade = 0.6;
     this.experiencia = 0;
     this.atualizaExperienciaProximoLevel();
     if(this.level <= 0){
       this.level = 1;
-      this.ultimaReducaoInapetencia = Date.now();
+      //this.ultimaReducaoInapetencia = Date();
       this.dinheiro = 150;
       this.experiencia_proximo_level = 100;
     }
@@ -117,18 +120,24 @@ export class Bixinho {
 
 
 //###################FUNCOES RELACIONADAS COM TEMPO################################
-  diffEmHorasDeDataPassadaParaAtual(dataPassada: Date) {
+  private diffEmHorasDeDataPassadaParaAtual(dataPassada: Date) {
     const HOURSINms = 60*1000;//60*60*1000;
-    console.log(dataPassada);
-    return Math.floor((Date.now() - Date.parse(dataPassada.toISOString())) / HOURSINms)+1;
+    return Math.floor((Date.now() - Date.parse(dataPassada.toISOString())) / HOURSINms);
   }
-
-  tempoPassou() {
-    if(this.diffEmHorasDeDataPassadaParaAtual(this.ultimaReducaoInapetencia) > 1){
+  diminuiInapetenciaNoDecorrerDoTempo() {
+    if(this.diffEmHorasDeDataPassadaParaAtual(this.ultimaReducaoInapetencia) >= 1){
       const diffEmHoras = this.diffEmHorasDeDataPassadaParaAtual(this.ultimaReducaoInapetencia);
-      this.diminuiInapetencia(diffEmHoras/100);
+      this.diminuiInapetencia(10*diffEmHoras/100);
+      this.diminuiFelicidade(10*diffEmHoras/100);
+      this.ultimaReducaoInapetencia = new Date();
     }
   }
 
+  verData() {
+    console.log(this.ultimaReducaoInapetencia);
+    console.log(Date());
+    const horasPassadas = this.diffEmHorasDeDataPassadaParaAtual(this.ultimaReducaoInapetencia);
+    console.log(horasPassadas);
+  }
 
 }

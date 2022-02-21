@@ -21,6 +21,7 @@ export class Tab2Page {
 
   ngOnInit() {
     this.temporizador = setInterval(() =>{
+      this.bixinho.diminuiInapetenciaNoDecorrerDoTempo();
       if(this.img_rotator===0)
         {this.src = "../../assets/img/bixinho"+String(this.bixinho.aparencia)+"_posicao1.svg";}
       if(this.img_rotator===1)

@@ -12,7 +12,7 @@ Tab 2 - meu studyka (nome do bixinho)
 
 ( ok ) Criar um giff utilizando 3 imagens svg, este giff é o bixinho.
 ( ok ) Modificar o código para que possam ser utilizados vários aparências de bixinhos.
-(   ) Criar uma classe contendo as informacoes do bixinho do usuário. E exibir as informações e barras necessárias de forma adequada.
+(Eric) Criar uma classe contendo as informacoes do bixinho do usuário. E exibir as informações e barras necessárias de forma adequada.
 O bixinho terá barra de fome.
 O bixinho terá barra de felicidade.
 O bixinho terá sua experiência exibida com 2 casas decimais.
