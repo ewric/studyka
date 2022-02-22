@@ -1,6 +1,7 @@
 import { Bixinho } from './../models/IBixinho.model';
 import { Component } from '@angular/core';
 import { IonDatetime } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab2',
@@ -17,7 +18,7 @@ export class Tab2Page {
   diffDias: number;
 
 
-  constructor() {}
+  constructor(public alertController: AlertController) {}
 
   ngOnInit() {
     this.temporizador = setInterval(() =>{
@@ -38,5 +39,52 @@ export class Tab2Page {
     clearInterval(this.temporizador);
   }
 
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Alert',
+      subHeader: 'Subtitle',
+      message: 'This is an alert message.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+    console.log('onDidDismiss resolved with role', role);
+  }
+
+  async alertaModificarNomeBixinho() {
+    const alert = await this.alertController.create({
+      cssClass: 'meu_alertaModificarNomeBixinho',
+      header: 'Renomear o bixinho:',
+      inputs: [
+        {
+          name: 'nome',
+          type: 'text',
+          placeholder: 'Novo nome do bixinho'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+          }
+        }, {
+          text: 'Ok',
+          handler: (res) => {
+            console.log('Confirm Ok');
+            console.log(res);
+            this.bixinho.nome = res.nome;
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
 
 }
