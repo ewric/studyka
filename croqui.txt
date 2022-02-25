@@ -12,7 +12,7 @@ Tab 2 - meu studyka (nome do bixinho)
 
 ( ok ) Criar um giff utilizando 3 imagens svg, este giff é o bixinho.
 ( ok ) Modificar o código para que possam ser utilizados vários aparências de bixinhos.
-(Eric) Criar uma classe contendo as informacoes do bixinho do usuário. E exibir as informações e barras necessárias de forma adequada.
+( ok ) Criar uma classe contendo as informacoes do bixinho do usuário. E exibir as informações e barras necessárias de forma adequada.
 O bixinho terá barra de fome.
 O bixinho terá barra de felicidade.
 O bixinho terá sua experiência exibida com 2 casas decimais.
@@ -28,7 +28,9 @@ O limite de experiência daquele level deve ser aumentado de acordo com o aumento
 Pena de morte: Se o bixinho zerar a barra de fome ou de felicidade, ocorre a pena de morte. Nela, o bixinho perde 2 levels e a experiência é zerada. Se o bixinho voltar para o level 1, o dinheiro retorna ao valor inicial.
 No início do jogo, um valor de dinheiro inicial é alocado ao usuário.
 O dinheiro aumenta quando bons hábitos são praticados.
---------------------------------------------------------------Tab 3 - Registro de bons hábitos e maus hábitos
+(   ) Salvar o bixinho no sqlite storage.
+--------------------------------------------------------------
+Tab 3 - Registro de bons hábitos e maus hábitos
 (   ) Botão para registrar um bom hábito
 (   ) Botão para registrar mau hábito
 (   ) Exibição dos bons hábitos e maus hábitos
@@ -36,7 +38,7 @@ O dinheiro aumenta quando bons hábitos são praticados.
 
 --------------------------------------------------------------
 Tab 4 - loja de itens e brinquedos
-(   ) Criar esta tab de forma a funcionar como as demais.
+( ok ) Criar esta tab de forma a funcionar como as demais.
 (   ) Exibir dinheiro nesta tela em local apropriado.
 (   ) Criar icones de comida e brinquedos com o valor ao lado.
 (   ) Icones clicaveis executando funcao de alimentacao o de aumento de felicidade da classe bixinho.
