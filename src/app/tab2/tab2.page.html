@@ -10,7 +10,7 @@
 
 
 
-<ion-content [fullscreen]="true" [scrollY]="false">
+<ion-content [fullscreen]="true" [scrollY]="true">
   <ion-grid fixed>
     <ion-row>
       <ion-col size="12">
@@ -101,4 +101,10 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+  <ion-button (click)="salvaDadosNoDB()">
+    Click me
+  </ion-button>
+  <ion-button (click)="carregaDadosDoDB()">
+    Click me
+  </ion-button>
 </ion-content>

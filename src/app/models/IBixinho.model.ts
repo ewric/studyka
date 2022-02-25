@@ -1,3 +1,4 @@
+import { Tab2Page } from './../tab2/tab2.page';
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable @typescript-eslint/naming-convention */
 export class Bixinho {
@@ -15,7 +16,7 @@ export class Bixinho {
   CUSTO_COMIDA = 15;
   CUSTO_BRINQUEDO = 15;
 
-  nome = "Meu Bixinho";
+  nome = "Meu_Bixinho";
   inapetencia = this.INAPETENCIA_INICIAL;
   felicidade = this.FELICIDADE_INICIAL;
   experiencia = 0;
@@ -98,10 +99,12 @@ export class Bixinho {
     this.aumentaFelicidade(Math.random()*this.FELICIDADE_BOM_HABITO);
     this.aumentaDinheiro();
     this.aumentaExperiencia();
+    Tab2Page.prototype.salvaDadosNoDB();
   }
   mauHabito() {
     this.felicidade -= Math.round(Math.random()*this.FELICIDADE_MAU_HABITO);
     if(this.felicidade <= 0) this.felicidade = 0;
+    Tab2Page.prototype.salvaDadosNoDB();
   }
 
 
@@ -114,6 +117,7 @@ export class Bixinho {
     if(this.dinheiro-this.CUSTO_BRINQUEDO >= 0) {
       this.aumentaFelicidade(this.BRINQUEDO);
       this.dinheiro -= this.CUSTO_BRINQUEDO;
+      Tab2Page.prototype.salvaDadosNoDB();
     }
   }
 
@@ -121,6 +125,7 @@ export class Bixinho {
     if(this.dinheiro-this.CUSTO_COMIDA >= 0) {
       this.aumentaInapetencia(this.COMIDA);
       this.dinheiro -= this.CUSTO_COMIDA;
+      Tab2Page.prototype.salvaDadosNoDB();
     }
   }
 

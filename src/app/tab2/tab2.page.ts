@@ -1,37 +1,57 @@
+import { DatabaseService } from './../services/database.service';
+import { Storage } from '@ionic/storage';
 import { Bixinho } from './../models/IBixinho.model';
-import { Component } from '@angular/core';
-import { IonDatetime } from '@ionic/angular';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss']
+  styleUrls: ['tab2.page.scss'],
 })
-export class Tab2Page {
-  bixinho = new Bixinho;
-  src = "../../assets/img/bixinho"+String(this.bixinho.aparencia)+"_posicao1.svg";
+export class Tab2Page implements OnInit, OnDestroy {
+  bixinho = new Bixinho();
+  src =
+    '../../assets/img/bixinho' +
+    String(this.bixinho.aparencia) +
+    '_posicao1.svg';
   img_rotator = 0;
   temporizador: any;
 
-  ultimoAcesso = new Date(2022,0,18);
+  ultimoAcesso = new Date(2022, 0, 18);
   diffDias: number;
 
-
-  constructor(public alertController: AlertController) {}
+  constructor(
+    public alertController: AlertController,
+    public databaseService: DatabaseService
+  ) {}
 
   ngOnInit() {
-    this.temporizador = setInterval(() =>{
+    this.carregaDadosDoDB();
+    this.temporizador = setInterval(() => {
       this.bixinho.diminuiInapetenciaNoDecorrerDoTempo();
-      if(this.img_rotator===0)
-        {this.src = "../../assets/img/bixinho"+String(this.bixinho.aparencia)+"_posicao1.svg";}
-      if(this.img_rotator===1)
-        {this.src = "../../assets/img/bixinho"+String(this.bixinho.aparencia)+"_posicao2.svg";}
-      if(this.img_rotator===2)
-        {this.src = "../../assets/img/bixinho"+String(this.bixinho.aparencia)+"_posicao3.svg";}
+      if (this.img_rotator === 0) {
+        this.src =
+          '../../assets/img/bixinho' +
+          String(this.bixinho.aparencia) +
+          '_posicao1.svg';
+      }
+      if (this.img_rotator === 1) {
+        this.src =
+          '../../assets/img/bixinho' +
+          String(this.bixinho.aparencia) +
+          '_posicao2.svg';
+      }
+      if (this.img_rotator === 2) {
+        this.src =
+          '../../assets/img/bixinho' +
+          String(this.bixinho.aparencia) +
+          '_posicao3.svg';
+      }
       this.img_rotator++;
-      if(this.img_rotator>=3)
-        {this.img_rotator=0;}
+      if (this.img_rotator >= 3) {
+        this.img_rotator = 0;
+      }
     }, 700);
   }
 
@@ -45,7 +65,7 @@ export class Tab2Page {
       header: 'Alert',
       subHeader: 'Subtitle',
       message: 'This is an alert message.',
-      buttons: ['OK']
+      buttons: ['OK'],
     });
 
     await alert.present();
@@ -62,8 +82,8 @@ export class Tab2Page {
         {
           name: 'nome',
           type: 'text',
-          placeholder: 'Novo nome do bixinho'
-        }
+          placeholder: 'Novo nome do bixinho',
+        },
       ],
       buttons: [
         {
@@ -72,19 +92,42 @@ export class Tab2Page {
           cssClass: 'secondary',
           handler: () => {
             console.log('Confirm Cancel');
-          }
-        }, {
+          },
+        },
+        {
           text: 'Ok',
           handler: (res) => {
             console.log('Confirm Ok');
             console.log(res);
             this.bixinho.nome = res.nome;
-          }
-        }
-      ]
+          },
+        },
+      ],
     });
 
     await alert.present();
   }
 
+  public salvaDadosNoDB() {
+    this.databaseService.set('bixinho', this.bixinho);
+  }
+
+  public async carregaDadosDoDB() {
+    const aux = await this.databaseService.get('bixinho');
+    console.log(aux);
+    if (aux != null) {
+      this.bixinho.aparencia = aux.aparencia;
+      this.bixinho.dinheiro = aux.dinheiro;
+      this.bixinho.experiencia = aux.experiencia;
+      this.bixinho.nome = aux.nome;
+      this.bixinho.experiencia_normalizada = aux.experiencia_normalizada;
+      this.bixinho.experiencia_porcentagem = aux.experiencia_porcentagem;
+      this.bixinho.experiencia_proximo_level = aux.experiencia_proximo_level;
+      this.bixinho.felicidade = aux.felicidade;
+      this.bixinho.inapetencia = aux.inapetencia;
+      this.bixinho.level = aux.level;
+      this.bixinho.nome = aux.nome;
+      this.bixinho.ultimaReducaoInapetencia = aux.ultimaReducaoInapetencia;
+    }
+  }
 }
