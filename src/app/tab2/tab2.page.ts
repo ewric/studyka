@@ -34,6 +34,7 @@ export class Tab2Page implements OnInit, OnDestroy {
   ionViewDidEnter() {
     this.carregaDadosDoDB().then(() => {
       this.bixinho.diminuiInapetenciaNoDecorrerDoTempo();
+      this.salvaDadosNoDB();
     });
     this.construtorDoGiff();
   }
@@ -112,6 +113,7 @@ export class Tab2Page implements OnInit, OnDestroy {
             console.log('Confirm Ok');
             console.log(res);
             this.bixinho.nome = res.nome;
+            this.salvaDadosNoDB();
           },
         },
       ],
