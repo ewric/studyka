@@ -72,20 +72,7 @@ export class Tab2Page implements OnInit, OnDestroy {
     }, 700);
   }
 
-  async presentAlert() {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'Alert',
-      subHeader: 'Subtitle',
-      message: 'This is an alert message.',
-      buttons: ['OK'],
-    });
 
-    await alert.present();
-
-    const { role } = await alert.onDidDismiss();
-    console.log('onDidDismiss resolved with role', role);
-  }
 
   async alertaModificarNomeBixinho() {
     const alert = await this.alertController.create({
@@ -122,6 +109,34 @@ export class Tab2Page implements OnInit, OnDestroy {
     await alert.present();
   }
 
+  async alertaResetaBixinho() {
+    const alert1 = await this.alertController.create({
+      cssClass: 'meu_alertaModificarNomeBixinho',
+      header: 'ATENÇÃO!!!!!',
+      message: ("Ao clicar em ok, você estará reiniciando seu bixinho. Ele voltará ao nível 1!!"+
+      " Não será possível desfazer esta alteração! Deseja continuar?"),
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+          },
+        },
+        {
+          text: 'Ok',
+          handler: (res) => {
+            this.resetaBixinho();
+          },
+        },
+      ],
+    });
+
+    await alert1.present();
+  }
+
+
   public salvaDadosNoDB() {
     this.databaseService.set('bixinho', this.bixinho);
   }
@@ -144,5 +159,10 @@ export class Tab2Page implements OnInit, OnDestroy {
       console.log('Bixinho carregado!');
     }
     return 1;
+  }
+
+  public resetaBixinho() {
+    this.bixinho = new Bixinho;
+    this.salvaDadosNoDB();
   }
 }

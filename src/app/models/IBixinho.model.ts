@@ -131,7 +131,7 @@ export class Bixinho {
 
 //###################FUNCOES RELACIONADAS COM TEMPO################################
   private diffEmHorasDeDataPassadaParaAtual(dataPassada: Date) {
-    const HOURSINms = 1000;//60*60*1000;
+    const HOURSINms = 60*60*1000;
     return Math.abs(Math.floor((Date.now() - Date.parse(dataPassada.toISOString())) / HOURSINms));
   }
 

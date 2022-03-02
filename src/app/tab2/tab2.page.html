@@ -94,9 +94,14 @@
       </ion-col>
     </ion-row>
     <ion-row><!--########################muda nome bixinho##########################-->
-      <ion-col size="12">
-        <ion-button (click)="alertaModificarNomeBixinho();salvaDadosNoDB()" expand="block" shape="round">
+      <ion-col size="9">
+        <ion-button (click)="alertaModificarNomeBixinho();" expand="block">
           Renomear bixinho
+        </ion-button>
+      </ion-col>
+      <ion-col size="3">
+        <ion-button (click)="alertaResetaBixinho()">
+          <ion-icon name="trash-outline"></ion-icon>
         </ion-button>
       </ion-col>
     </ion-row>
