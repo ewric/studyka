@@ -1,13 +1,14 @@
-import { Tab2Page } from './../tab2/tab2.page';
+import { DatabaseService } from '../services/database.service';
+
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable @typescript-eslint/naming-convention */
 export class Bixinho {
   private INAPETENCIA_INICIAL = 0.6;
   private FELICIDADE_INICIAL = 0.6;
-  private BRINQUEDO = 0.1; //quanto que um brinquedo dá de felicidade
+  private BRINQUEDO = 0.07; //quanto que um brinquedo dá de felicidade
   private COMIDA = 0.05; //quanto que uma comida dá de felicidade
   private FELICIDADE_BOM_HABITO = 0.1; //quanto de felicidade aumenta praticando bom habito (random*this)
-  private FELICIDADE_MAU_HABITO = 0.2; //quanto de felicidade diminui praticando mau habito (random*this)
+  private FELICIDADE_MAU_HABITO = 0.1; //quanto de felicidade diminui praticando mau habito (random*this)
   private DINHEIRO_INICIAL = 150; //dinheiro em que se inicia o jogo
   private DINHEIRO_BOM_HABITO = 30; //quanto de dinheiro se ganha praticando bom habito
   private EXPERIENCIA_BOM_HABITO = 20; //quanto de exp se ganha praticando bom habito (random*this)
@@ -60,7 +61,7 @@ export class Bixinho {
 //###################FUNCOES RELACIONADAS A LEVEL################################
   private aumentaExperiencia() {
     if(this.inapetencia >= 0.5 && this.felicidade >= 0.5) {
-      this.experiencia += Math.round(Math.random()*20);
+      this.experiencia += Math.round(Math.random()*this.EXPERIENCIA_BOM_HABITO);
       this.atualizaExperiencia();
     }
     if(this.experiencia>=this.experiencia_proximo_level) this.passouDeLevel();
@@ -83,6 +84,7 @@ export class Bixinho {
     this.inapetencia = 0.6;
     this.felicidade = 0.6;
     this.experiencia = 0;
+    this.level -= 2;
     this.atualizaExperienciaProximoLevel();
     if(this.level <= 0){
       this.level = 1;
@@ -99,12 +101,11 @@ export class Bixinho {
     this.aumentaFelicidade(Math.random()*this.FELICIDADE_BOM_HABITO);
     this.aumentaDinheiro();
     this.aumentaExperiencia();
-    Tab2Page.prototype.salvaDadosNoDB();
+    //Tab2Page.prototype.salvaDadosNoDB();
   }
   mauHabito() {
-    this.felicidade -= Math.round(Math.random()*this.FELICIDADE_MAU_HABITO);
-    if(this.felicidade <= 0) this.felicidade = 0;
-    Tab2Page.prototype.salvaDadosNoDB();
+    this.diminuiFelicidade(Math.random()*this.FELICIDADE_MAU_HABITO);
+    //Tab2Page.prototype.salvaDadosNoDB();
   }
 
 
@@ -117,7 +118,7 @@ export class Bixinho {
     if(this.dinheiro-this.CUSTO_BRINQUEDO >= 0) {
       this.aumentaFelicidade(this.BRINQUEDO);
       this.dinheiro -= this.CUSTO_BRINQUEDO;
-      Tab2Page.prototype.salvaDadosNoDB();
+      //Tab2Page.prototype.salvaDadosNoDB();
     }
   }
 
@@ -125,22 +126,28 @@ export class Bixinho {
     if(this.dinheiro-this.CUSTO_COMIDA >= 0) {
       this.aumentaInapetencia(this.COMIDA);
       this.dinheiro -= this.CUSTO_COMIDA;
-      Tab2Page.prototype.salvaDadosNoDB();
+      //Tab2Page.prototype.salvaDadosNoDB();
     }
   }
 
 
 //###################FUNCOES RELACIONADAS COM TEMPO################################
   private diffEmHorasDeDataPassadaParaAtual(dataPassada: Date) {
-    const HOURSINms = 60*60*1000;
-    return Math.floor((Date.now() - Date.parse(dataPassada.toISOString())) / HOURSINms);
+    const HOURSINms = 60*1000;//60*60*1000;
+    return Math.abs(Math.floor((Date.now() - Date.parse(dataPassada.toISOString())) / HOURSINms));
   }
+
+
   diminuiInapetenciaNoDecorrerDoTempo() {
-    if(this.diffEmHorasDeDataPassadaParaAtual(this.ultimaReducaoInapetencia) >= 1){
-      const diffEmHoras = this.diffEmHorasDeDataPassadaParaAtual(this.ultimaReducaoInapetencia);
+    const diffEmHoras = this.diffEmHorasDeDataPassadaParaAtual(this.ultimaReducaoInapetencia);
+    console.log(diffEmHoras);
+    if(diffEmHoras >= 1){
       this.diminuiInapetencia(diffEmHoras/100);
       this.diminuiFelicidade(diffEmHoras/100);
+      console.log(this.ultimaReducaoInapetencia);
       this.ultimaReducaoInapetencia = new Date();
+      console.log(this.ultimaReducaoInapetencia);
+      console.log(diffEmHoras/100);
     }
   }
 
@@ -155,5 +162,4 @@ export class Bixinho {
     this.diminuiInapetencia(24/100);
     this.diminuiFelicidade(24/100);
   }
-
 }

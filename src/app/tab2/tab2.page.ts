@@ -1,7 +1,11 @@
 import { DatabaseService } from './../services/database.service';
-import { Storage } from '@ionic/storage';
 import { Bixinho } from './../models/IBixinho.model';
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  inject,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { AlertController } from '@ionic/angular';
 
 @Component({
@@ -18,18 +22,29 @@ export class Tab2Page implements OnInit, OnDestroy {
   img_rotator = 0;
   temporizador: any;
 
-  ultimoAcesso = new Date(2022, 0, 18);
-  diffDias: number;
-
   constructor(
     public alertController: AlertController,
     public databaseService: DatabaseService
   ) {}
 
-  ngOnInit() {
-    this.carregaDadosDoDB();
-    this.temporizador = setInterval(() => {
+  ngOnInit() {}
+
+  ngOnDestroy() {}
+
+  ionViewDidEnter() {
+    this.carregaDadosDoDB().then(() => {
       this.bixinho.diminuiInapetenciaNoDecorrerDoTempo();
+    });
+    this.construtorDoGiff();
+  }
+
+  ionViewDidLeave() {
+    clearInterval(this.temporizador);
+  }
+
+  public construtorDoGiff() {
+    this.temporizador = setInterval(() => {
+
       if (this.img_rotator === 0) {
         this.src =
           '../../assets/img/bixinho' +
@@ -42,6 +57,7 @@ export class Tab2Page implements OnInit, OnDestroy {
           String(this.bixinho.aparencia) +
           '_posicao2.svg';
       }
+
       if (this.img_rotator === 2) {
         this.src =
           '../../assets/img/bixinho' +
@@ -53,10 +69,6 @@ export class Tab2Page implements OnInit, OnDestroy {
         this.img_rotator = 0;
       }
     }, 700);
-  }
-
-  ngOnDestroy() {
-    clearInterval(this.temporizador);
   }
 
   async presentAlert() {
@@ -114,7 +126,6 @@ export class Tab2Page implements OnInit, OnDestroy {
 
   public async carregaDadosDoDB() {
     const aux = await this.databaseService.get('bixinho');
-    console.log(aux);
     if (aux != null) {
       this.bixinho.aparencia = aux.aparencia;
       this.bixinho.dinheiro = aux.dinheiro;
@@ -128,6 +139,8 @@ export class Tab2Page implements OnInit, OnDestroy {
       this.bixinho.level = aux.level;
       this.bixinho.nome = aux.nome;
       this.bixinho.ultimaReducaoInapetencia = aux.ultimaReducaoInapetencia;
+      console.log('Bixinho carregado!');
     }
+    return 1;
   }
 }
