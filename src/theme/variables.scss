@@ -74,7 +74,61 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  /** heavyOrange **/
+  --ion-color-heavyorange: #ffa200;
+	--ion-color-heavyorange-rgb: 255,162,0;
+	--ion-color-heavyorange-contrast: #000000;
+	--ion-color-heavyorange-contrast-rgb: 0,0,0;
+	--ion-color-heavyorange-shade: #e08f00;
+	--ion-color-heavyorange-tint: #ffab1a;
+
+  /** lightred **/
+	--ion-color-lightred: #fda5a5;
+	--ion-color-lightred-rgb: 253,165,165;
+	--ion-color-lightred-contrast: #000000;
+	--ion-color-lightred-contrast-rgb: 0,0,0;
+	--ion-color-lightred-shade: #df9191;
+	--ion-color-lightred-tint: #fdaeae;
+
+  /** lightgreen **/
+	--ion-color-lightgreen: #91fda7;
+	--ion-color-lightgreen-rgb: 145,253,167;
+	--ion-color-lightgreen-contrast: #000000;
+	--ion-color-lightgreen-contrast-rgb: 0,0,0;
+	--ion-color-lightgreen-shade: #80df93;
+	--ion-color-lightgreen-tint: #9cfdb0;
+
 }
+
+.ion-color-heavyorange {
+	--ion-color-base: var(--ion-color-heavyorange);
+	--ion-color-base-rgb: var(--ion-color-heavyorange-rgb);
+	--ion-color-contrast: var(--ion-color-heavyorange-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-heavyorange-contrast-rgb);
+	--ion-color-shade: var(--ion-color-heavyorange-shade);
+	--ion-color-tint: var(--ion-color-heavyorange-tint);
+}
+
+.ion-color-lightred {
+	--ion-color-base: var(--ion-color-lightred);
+	--ion-color-base-rgb: var(--ion-color-lightred-rgb);
+	--ion-color-contrast: var(--ion-color-lightred-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-lightred-contrast-rgb);
+	--ion-color-shade: var(--ion-color-lightred-shade);
+	--ion-color-tint: var(--ion-color-lightred-tint);
+}
+
+.ion-color-lightgreen {
+	--ion-color-base: var(--ion-color-lightgreen);
+	--ion-color-base-rgb: var(--ion-color-lightgreen-rgb);
+	--ion-color-contrast: var(--ion-color-lightgreen-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-lightgreen-contrast-rgb);
+	--ion-color-shade: var(--ion-color-lightgreen-shade);
+	--ion-color-tint: var(--ion-color-lightgreen-tint);
+}
+
+
 
 @media (prefers-color-scheme: dark) {
   /*
@@ -232,5 +286,7 @@
     --ion-tab-bar-background: #1f1f1f;
 
     --ion-card-background: #1e1e1e;
+
+
   }
 }
