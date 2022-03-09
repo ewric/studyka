@@ -1,3 +1,4 @@
+import { Bixinho } from './../models/IBixinho.model';
 import { Habito } from './../models/IHabito.model';
 import { Component, ViewChild } from '@angular/core';
 import { IonReorderGroup } from '@ionic/angular';
