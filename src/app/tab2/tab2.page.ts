@@ -1,5 +1,5 @@
+import { MeuBixinhoService } from './../services/meu-bixinho.service';
 import { DatabaseService } from './../services/database.service';
-import { Bixinho } from './../models/IBixinho.model';
 import {
   Component,
   inject,
@@ -14,18 +14,21 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['tab2.page.scss'],
 })
 export class Tab2Page implements OnInit, OnDestroy {
-  bixinho = new Bixinho();
-  src =
+  src = '../../assets/img/bixinho' +
+  String(this.meuBixinhoService.bixinho.aparencia) +
+  '_posicao1.svg';
+  /*src =
     '../../assets/img/bixinho' +
-    String(this.bixinho.aparencia) +
-    '_posicao1.svg';
+    String(this.meuBixinhoService.bixinho.aparencia) +
+    '_posicao1.svg';*/
   img_rotator = 0;
   temporizador: any;
 
   constructor(
     public alertController: AlertController,
-    public databaseService: DatabaseService
-  ) {}
+    public databaseService: DatabaseService,
+    private meuBixinhoService: MeuBixinhoService
+    ) {}
 
   ngOnInit() {}
 
@@ -33,7 +36,7 @@ export class Tab2Page implements OnInit, OnDestroy {
 
   ionViewDidEnter() {
     this.carregaDadosDoDB().then(() => {
-      this.bixinho.diminuiInapetenciaNoDecorrerDoTempo();
+      this.meuBixinhoService.bixinho.diminuiInapetenciaNoDecorrerDoTempo();
       this.salvaDadosNoDB();
     });
     this.construtorDoGiff();
@@ -49,20 +52,20 @@ export class Tab2Page implements OnInit, OnDestroy {
       if (this.img_rotator === 0) {
         this.src =
           '../../assets/img/bixinho' +
-          String(this.bixinho.aparencia) +
+          String(this.meuBixinhoService.bixinho.aparencia) +
           '_posicao1.svg';
       }
       if (this.img_rotator === 1) {
         this.src =
           '../../assets/img/bixinho' +
-          String(this.bixinho.aparencia) +
+          String(this.meuBixinhoService.bixinho.aparencia) +
           '_posicao2.svg';
       }
 
       if (this.img_rotator === 2) {
         this.src =
           '../../assets/img/bixinho' +
-          String(this.bixinho.aparencia) +
+          String(this.meuBixinhoService.bixinho.aparencia) +
           '_posicao3.svg';
       }
       this.img_rotator++;
@@ -71,8 +74,6 @@ export class Tab2Page implements OnInit, OnDestroy {
       }
     }, 700);
   }
-
-
 
   async alertaModificarNomeBixinho() {
     const alert = await this.alertController.create({
@@ -99,7 +100,7 @@ export class Tab2Page implements OnInit, OnDestroy {
           handler: (res) => {
             console.log('Confirm Ok');
             console.log(res);
-            this.bixinho.nome = res.nome;
+            this.meuBixinhoService.bixinho.modificaNome(res);
             this.salvaDadosNoDB();
           },
         },
@@ -138,31 +139,17 @@ export class Tab2Page implements OnInit, OnDestroy {
 
 
   public salvaDadosNoDB() {
-    this.databaseService.set('bixinho', this.bixinho);
+    this.databaseService.set('bixinho', this.meuBixinhoService.bixinho);
   }
 
   public async carregaDadosDoDB() {
     const aux = await this.databaseService.get('bixinho');
-    if (aux != null) {
-      this.bixinho.aparencia = aux.aparencia;
-      this.bixinho.dinheiro = aux.dinheiro;
-      this.bixinho.experiencia = aux.experiencia;
-      this.bixinho.nome = aux.nome;
-      this.bixinho.experiencia_normalizada = aux.experiencia_normalizada;
-      this.bixinho.experiencia_porcentagem = aux.experiencia_porcentagem;
-      this.bixinho.experiencia_proximo_level = aux.experiencia_proximo_level;
-      this.bixinho.felicidade = aux.felicidade;
-      this.bixinho.inapetencia = aux.inapetencia;
-      this.bixinho.level = aux.level;
-      this.bixinho.nome = aux.nome;
-      this.bixinho.ultimaReducaoInapetencia = aux.ultimaReducaoInapetencia;
-      console.log('Bixinho carregado!');
-    }
+    this.meuBixinhoService.carregaBixinhoDB(aux);
     return 1;
   }
 
   public resetaBixinho() {
-    this.bixinho = new Bixinho;
+    this.meuBixinhoService.resetaBixinho();
     this.salvaDadosNoDB();
   }
 }

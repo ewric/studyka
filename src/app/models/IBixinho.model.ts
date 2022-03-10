@@ -1,4 +1,4 @@
-import { DatabaseService } from '../services/database.service';
+
 
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable @typescript-eslint/naming-convention */
@@ -33,6 +33,11 @@ export class Bixinho {
 
 
   constructor() {}
+
+  public modificaNome(nome: string) {
+    this.nome = nome;
+  }
+
 //###################FUNCOES QUE AUMENTAM OU DIMINUEM ALGUMA VARIAVEL################################
   private aumentaInapetencia(aumento: number) {
     this.inapetencia += aumento;
