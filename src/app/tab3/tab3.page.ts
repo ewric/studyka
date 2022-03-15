@@ -8,7 +8,11 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page implements OnInit {
+  registronovapagina = '../../registrarhabito';
+
   constructor(public iMeusHabitosService: IMeusHabitosService,private alertController: AlertController) {}
+
+
 
   ngOnInit() {
     this.organizaDatas();

@@ -1,3 +1,6 @@
+import { MeuBixinhoService } from './services/meu-bixinho.service';
+import { IMeusHabitosService } from './services/imeus-habitos.service';
+import { DatabaseService } from './services/database.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -22,7 +25,10 @@ import * as cordovaSQLiteDriver from 'localforage-cordovasqlitedriver';
       driverOrder: [Drivers.IndexedDB, cordovaSQLiteDriver._driver]
     })
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    DatabaseService, IMeusHabitosService, MeuBixinhoService
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

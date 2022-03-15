@@ -92,14 +92,11 @@ export class Tab2Page implements OnInit, OnDestroy {
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
-            console.log('Confirm Cancel');
           },
         },
         {
           text: 'Ok',
           handler: (res) => {
-            console.log('Confirm Ok');
-            console.log(res);
             this.meuBixinhoService.bixinho.modificaNome(res);
             this.salvaDadosNoDB();
           },
