@@ -1,17 +1,23 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title> Hábitos </ion-title>
+    <ion-title> Tarefas </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div *ngFor="let habito of listaHabitos">
-    <ion-item *ngIf="habito.tipo" color="lightgreen">
-      <ion-label>{{habito.texto}}</ion-label>
-    </ion-item>
-    <ion-item *ngIf="!habito.tipo" color="lightred">
-      <ion-label>{{habito.texto}}</ion-label>
+  <div *ngFor="let habito of iMeusHabitosService.listaHabitos">
+    <ion-item color="lightgreen">
+      <ion-label>
+        <p style="font-weight: bolder;">{{habito.texto}}</p>
+        {{habito.data}}
+      </ion-label>
     </ion-item>
   </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 </ion-content>

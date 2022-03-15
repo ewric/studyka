@@ -27,7 +27,7 @@ export class Tab2Page implements OnInit, OnDestroy {
   constructor(
     public alertController: AlertController,
     public databaseService: DatabaseService,
-    private meuBixinhoService: MeuBixinhoService
+    public meuBixinhoService: MeuBixinhoService,
     ) {}
 
   ngOnInit() {}

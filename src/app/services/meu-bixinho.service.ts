@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class MeuBixinhoService {
-  public bixinho: Bixinho;
+  bixinho = new Bixinho();
   constructor() {}
 
   carregaBixinhoDB(aux: any) {

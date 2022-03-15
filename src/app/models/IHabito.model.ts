@@ -1,4 +1,8 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 export class Habito {
   texto: string;
-  tipo: boolean; //true = bom habito ; false = mau habito;
+  data: Date;
+
+  constructor() {}
+
 }
