@@ -9,7 +9,6 @@ import { AlertController } from '@ionic/angular';
 })
 export class Tab3Page implements OnInit {
   registronovapagina = '../../registrarhabito';
-
   constructor(public iMeusHabitosService: IMeusHabitosService,private alertController: AlertController) {}
 
 
@@ -21,5 +20,15 @@ export class Tab3Page implements OnInit {
 
   organizaDatas() {
     this.iMeusHabitosService.ordenaHabitosPorData();
+  }
+
+  verificaData(habito: any) {
+    console.log(habito);
+    console.log(Date.now() - Date.parse(habito.data.toISOString()));
+    if((Date.parse(habito.data.toISOString()) - Date.now()) > 0){
+      return 1;
+    }
+
+    return 0;
   }
 }
