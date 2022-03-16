@@ -1,5 +1,7 @@
+import { IMeusHabitosService } from './../services/imeus-habitos.service';
 import { Component, OnInit } from '@angular/core';
 import { Habito } from '../models/IHabito.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registrarhabito',
@@ -8,15 +10,28 @@ import { Habito } from '../models/IHabito.model';
 })
 export class RegistrarhabitoPage implements OnInit {
 
-  public habito= new Habito();
-  constructor() {}
+  public data: string;
+  public habito = new Habito();
+  constructor(private iMeusHabitosService: IMeusHabitosService, private router: Router) {}
 
 
   ngOnInit() {
   }
 
-  mostraTexto() {
-    console.log(this.habito);
+
+  guardarHabito() {
+    this.habito.data = new Date(this.data);
+    if(this.habito.texto) {
+      this.iMeusHabitosService.listaHabitos.push(this.habito);
+    }
+    console.log(this.iMeusHabitosService.listaHabitos);
+    this.habito = new Habito();
+    this.router.navigateByUrl('tabs/tab3');
+
+  }
+
+  ajustarData() {
+
   }
 
 }

@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title class="ion-wrap-text">Registrar Tarefa</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button defaultHref="tabs/tab3"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -14,7 +14,11 @@
     <ion-input [(ngModel)]="habito.texto"></ion-input>
   </ion-item>
 
-  <ion-button (click)="mostraTexto()">mostra texto</ion-button>
+  <ion-datetime locale="en-GB" presentation="date" [(ngModel)]="data"></ion-datetime>
+
+  <ion-button (click)="guardarHabito()" expand="block">
+    Salvar Tarefa
+  </ion-button>
 
 
 </ion-content>
