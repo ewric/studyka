@@ -1,5 +1,6 @@
+
 import { IMeusHabitosService } from './../services/imeus-habitos.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 
 @Component({
@@ -7,13 +8,15 @@ import { AlertController } from '@ionic/angular';
   templateUrl: 'tab3.page.html',
   styleUrls: ['tab3.page.scss']
 })
-export class Tab3Page implements OnInit {
+export class Tab3Page {
   registronovapagina = '../../registrarhabito';
-  constructor(public iMeusHabitosService: IMeusHabitosService,private alertController: AlertController) {}
+  constructor(public iMeusHabitosService: IMeusHabitosService, private alertController: AlertController) {}
 
 
 
-  ngOnInit() {
+
+  ionViewDidEnter() {
+    this.iMeusHabitosService.carregaHabitosDoDB();
     this.organizaDatas();
   }
 
@@ -23,12 +26,11 @@ export class Tab3Page implements OnInit {
   }
 
   verificaData(habito: any) {
-    console.log(habito);
-    console.log(Date.now() - Date.parse(habito.data.toISOString()));
     if((Date.parse(habito.data.toISOString()) - Date.now()) > 0){
       return 1;
     }
-
     return 0;
   }
+
+
 }

@@ -8,14 +8,14 @@
   <div *ngFor="let habito of iMeusHabitosService.listaHabitos">
     <ion-item color="lightgreen" *ngIf="verificaData(habito)">
       <ion-label>
-        <p style="font-weight: bolder;">{{habito.texto}}</p>
+        <p style="font-weight: bolder;" class="ion-text-wrap">{{habito.texto}}</p>
         {{habito.data.getDate()}}/{{habito.data.getMonth()+1}}/{{habito.data.getFullYear()}}
       </ion-label>
     </ion-item>
 
     <ion-item color="lightred" *ngIf="!verificaData(habito)">
-      <ion-label>
-        <p style="font-weight: bolder;">{{habito.texto}}</p>
+      <ion-label >
+        <p style="font-weight: bolder;" class="ion-text-wrap">{{habito.texto}}</p>
         {{habito.data.getDate()}}/{{habito.data.getMonth()+1}}/{{habito.data.getFullYear()}}
       </ion-label>
     </ion-item>

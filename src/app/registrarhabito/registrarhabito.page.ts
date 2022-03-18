@@ -27,11 +27,7 @@ export class RegistrarhabitoPage implements OnInit {
     console.log(this.iMeusHabitosService.listaHabitos);
     this.habito = new Habito();
     this.router.navigateByUrl('tabs/tab3');
-
-  }
-
-  ajustarData() {
-
+    this.iMeusHabitosService.salvaHabitosNoDB();
   }
 
 }
