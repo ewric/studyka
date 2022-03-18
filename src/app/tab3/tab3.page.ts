@@ -13,9 +13,11 @@ import { AlertController } from '@ionic/angular';
 export class Tab3Page {
   registronovapagina = '../../registrarhabito';
   indexOfelement: number;
-  constructor(public iMeusHabitosService: IMeusHabitosService,
+  constructor(
+    public iMeusHabitosService: IMeusHabitosService,
      private alertController: AlertController,
-     private meuBixinhoService: MeuBixinhoService) {}
+     private meuBixinhoService: MeuBixinhoService,
+  ) {}
 
 
 
@@ -31,7 +33,7 @@ export class Tab3Page {
   }
 
   verificaData(habito: any) {
-    if((Date.parse(habito.data.toISOString()) - Date.now()) > 0){
+    if((Date.parse(habito.data.toISOString()) + 24*60*60*1000 - Date.now()) > 0){
       return 1;
     }
     return 0;
@@ -55,8 +57,16 @@ export class Tab3Page {
         {
           text: 'Ok',
           handler: (res) => {
-            this.meuBixinhoService.bixinho.bomHabito();
+            if (this.verificaData(this.iMeusHabitosService.listaHabitos[index])){
+              this.meuBixinhoService.bixinho.bomHabito();
+              console.log('Terminou tarefa em tempo habil!');
+            }
+            else{
+              this.meuBixinhoService.bixinho.mauHabito();
+              console.log('Tarefa atrasada!');
+            }
             this.iMeusHabitosService.deletaHabito(index);
+            this.meuBixinhoService.salvaDadosNoDB();
           },
         },
       ],

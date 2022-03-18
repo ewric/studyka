@@ -35,10 +35,8 @@ export class Tab2Page implements OnInit, OnDestroy {
   ngOnDestroy() {}
 
   ionViewDidEnter() {
-    this.carregaDadosDoDB().then(() => {
-      this.meuBixinhoService.bixinho.diminuiInapetenciaNoDecorrerDoTempo();
-      this.salvaDadosNoDB();
-    });
+    this.meuBixinhoService.carregaDadosDoDB();
+    this.meuBixinhoService.bixinho.diminuiInapetenciaNoDecorrerDoTempo();
     this.construtorDoGiff();
   }
 
@@ -97,8 +95,9 @@ export class Tab2Page implements OnInit, OnDestroy {
         {
           text: 'Ok',
           handler: (res) => {
-            this.meuBixinhoService.bixinho.modificaNome(res);
-            this.salvaDadosNoDB();
+            this.meuBixinhoService.bixinho.modificaNome(res.nome);
+            console.log('Modificando nome bixinho para:',this.meuBixinhoService.bixinho.nome);
+            this.meuBixinhoService.salvaDadosNoDB();
           },
         },
       ],
@@ -125,7 +124,8 @@ export class Tab2Page implements OnInit, OnDestroy {
         {
           text: 'Ok',
           handler: (res) => {
-            this.resetaBixinho();
+            this.meuBixinhoService.resetaBixinho();
+            this.meuBixinhoService.salvaDadosNoDB();
           },
         },
       ],
@@ -134,19 +134,4 @@ export class Tab2Page implements OnInit, OnDestroy {
     await alert1.present();
   }
 
-
-  public salvaDadosNoDB() {
-    this.databaseService.set('bixinho', this.meuBixinhoService.bixinho);
-  }
-
-  public async carregaDadosDoDB() {
-    const aux = await this.databaseService.get('bixinho');
-    this.meuBixinhoService.carregaBixinhoDB(aux);
-    return 1;
-  }
-
-  public resetaBixinho() {
-    this.meuBixinhoService.resetaBixinho();
-    this.salvaDadosNoDB();
-  }
 }

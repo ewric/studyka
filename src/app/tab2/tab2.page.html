@@ -62,35 +62,35 @@
         </div>
       </ion-col>
     </ion-row>
-    <ion-row><!--########################bom habito e mau habito##########################-->
+    <!--ion-row><########################bom habito e mau habito##########################>
       <ion-col size="6">
-       <ion-button size="small" (click)="meuBixinhoService.bixinho.bomHabito();salvaDadosNoDB()" style="--background:rgb(0, 148, 32)">
+       <ion-button size="small" (click)="meuBixinhoService.bixinho.bomHabito();meuBixinhoService.salvaDadosNoDB()" style="--background:rgb(0, 148, 32)">
         <ion-label style="font-weight: bolder; font-size: small;">Bom Hábito</ion-label>
        </ion-button>
       </ion-col>
       <ion-col size="6">
-        <ion-button size="small" (click)="meuBixinhoService.bixinho.mauHabito();salvaDadosNoDB()" color="danger">
+        <ion-button size="small" (click)="meuBixinhoService.bixinho.mauHabito();meuBixinhoService.salvaDadosNoDB()" color="danger">
           <ion-label style="font-weight: bolder; font-size: small;">Mau hábito</ion-label>
         </ion-button>
        </ion-col>
-    </ion-row>
+    </ion-row-->
     <ion-row><!--########################comida, brinquedo e passar 1 dia##########################-->
       <ion-col size="4">
-        <ion-button (click)="meuBixinhoService.bixinho.comprouComida();salvaDadosNoDB()" color="tertiary">
+        <ion-button (click)="meuBixinhoService.bixinho.comprouComida();meuBixinhoService.salvaDadosNoDB()" color="tertiary">
           <ion-icon name="fast-food-outline" style="padding-inline-end: 3px;"></ion-icon>
           ${{meuBixinhoService.bixinho.CUSTO_COMIDA}}
         </ion-button>
       </ion-col>
       <ion-col size="4">
-        <ion-button (click)="meuBixinhoService.bixinho.comprouBrinquedo();salvaDadosNoDB()" color="tertiary">
+        <ion-button (click)="meuBixinhoService.bixinho.comprouBrinquedo();meuBixinhoService.salvaDadosNoDB()" color="tertiary">
           <ion-icon name="dice-outline" style="padding-inline-end: 3px;"></ion-icon>
           ${{meuBixinhoService.bixinho.CUSTO_BRINQUEDO}}
         </ion-button>
       </ion-col>
       <ion-col size="4">
-        <ion-button (click)="meuBixinhoService.bixinho.passar1Dia();salvaDadosNoDB()" >
+        <!--ion-button (click)="meuBixinhoService.bixinho.passar1Dia();meuBixinhoService.salvaDadosNoDB()" >
           <ion-icon name="time-outline"></ion-icon>
-        </ion-button>
+        </ion-button-->
       </ion-col>
     </ion-row>
     <ion-row><!--########################muda nome bixinho##########################-->
