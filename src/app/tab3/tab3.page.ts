@@ -74,4 +74,29 @@ export class Tab3Page {
 
     await alert1.present();
   }
+
+  async alertaApagarHabito(index: number) {
+    const alert1 = await this.alertController.create({
+      cssClass: 'meu_alertaModificarNomeBixinho',
+      header: 'Deseja realmente apagar esta tarefa?',
+      message: (""),
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+          },
+        },
+        {
+          text: 'Ok',
+          handler: (res) => {
+            this.iMeusHabitosService.deletaHabito(index);
+          },
+        },
+      ],
+    });
+
+    await alert1.present();
+  }
 }
