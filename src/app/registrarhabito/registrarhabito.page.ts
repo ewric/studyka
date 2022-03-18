@@ -21,7 +21,7 @@ export class RegistrarhabitoPage implements OnInit {
 
   guardarHabito() {
     this.habito.data = new Date(this.data);
-    if(this.habito.texto) {
+    if(this.habito.texto && Date.parse(this.habito.data.toDateString())) {
       this.iMeusHabitosService.listaHabitos.push(this.habito);
     }
     console.log(this.iMeusHabitosService.listaHabitos);

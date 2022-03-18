@@ -28,5 +28,11 @@ export class IMeusHabitosService  {
     this.ordenaHabitosPorData();
     return 1;
   }
+
+  deletaHabito(index: number) {
+    console.log('deletar de lista habitos o index',index);
+    this.listaHabitos.splice(index,1);
+    this.salvaHabitosNoDB();
+  }
 }
 

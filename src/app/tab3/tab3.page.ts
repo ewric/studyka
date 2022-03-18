@@ -1,3 +1,5 @@
+import { Bixinho } from './../models/IBixinho.model';
+import { MeuBixinhoService } from './../services/meu-bixinho.service';
 
 import { IMeusHabitosService } from './../services/imeus-habitos.service';
 import { Component } from '@angular/core';
@@ -10,7 +12,10 @@ import { AlertController } from '@ionic/angular';
 })
 export class Tab3Page {
   registronovapagina = '../../registrarhabito';
-  constructor(public iMeusHabitosService: IMeusHabitosService, private alertController: AlertController) {}
+  indexOfelement: number;
+  constructor(public iMeusHabitosService: IMeusHabitosService,
+     private alertController: AlertController,
+     private meuBixinhoService: MeuBixinhoService) {}
 
 
 
@@ -33,4 +38,30 @@ export class Tab3Page {
   }
 
 
+  async alertaHabitoFeito(index: number) {
+    const alert1 = await this.alertController.create({
+      cssClass: 'meu_alertaModificarNomeBixinho',
+      header: 'Confirmar realização de tarefa!',
+      message: (""),
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+          },
+        },
+        {
+          text: 'Ok',
+          handler: (res) => {
+            this.meuBixinhoService.bixinho.bomHabito();
+            this.iMeusHabitosService.deletaHabito(index);
+          },
+        },
+      ],
+    });
+
+    await alert1.present();
+  }
 }
