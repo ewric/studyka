@@ -11,7 +11,7 @@ export class MeuBixinhoService {
   bixinho = new Bixinho();
   constructor(private databaseService: DatabaseService) {}
 
-  carregaBixinhoDB(aux: any) {
+  atualizaBixinho(aux: any) {
     if (aux) {
       this.bixinho.aparencia = aux.aparencia;
       this.bixinho.dinheiro = aux.dinheiro;
@@ -33,12 +33,14 @@ export class MeuBixinhoService {
   public salvaDadosNoDB() {
     this.databaseService.set('bixinho', this.bixinho);
     console.log('Bixinho salvo no DB!');
+    console.log(this.bixinho);
   }
 
   public async carregaDadosDoDB() {
     const aux = await this.databaseService.get('bixinho');
-    this.carregaBixinhoDB(aux);
+    this.atualizaBixinho(aux);
     console.log('Bixinho carregado do DB!');
+    console.log(this.bixinho);
     return 1;
   }
 

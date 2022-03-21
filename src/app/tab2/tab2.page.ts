@@ -2,7 +2,6 @@ import { MeuBixinhoService } from './../services/meu-bixinho.service';
 import { DatabaseService } from './../services/database.service';
 import {
   Component,
-  inject,
   OnDestroy,
   OnInit,
 } from '@angular/core';
@@ -34,9 +33,13 @@ export class Tab2Page implements OnInit, OnDestroy {
 
   ngOnDestroy() {}
 
-  ionViewDidEnter() {
-    this.meuBixinhoService.carregaDadosDoDB();
-    this.meuBixinhoService.bixinho.diminuiInapetenciaNoDecorrerDoTempo();
+  async ionViewDidEnter() {
+    await this.meuBixinhoService.carregaDadosDoDB();
+    console.log(this.meuBixinhoService.bixinho.inapetencia);
+    if(this.meuBixinhoService.bixinho.diminuiInapetenciaNoDecorrerDoTempo()){
+      this.alertaMorteBixinho();
+    };
+    console.log(this.meuBixinhoService.bixinho.inapetencia);
     this.construtorDoGiff();
   }
 
@@ -126,6 +129,24 @@ export class Tab2Page implements OnInit, OnDestroy {
           handler: (res) => {
             this.meuBixinhoService.resetaBixinho();
             this.meuBixinhoService.salvaDadosNoDB();
+          },
+        },
+      ],
+    });
+
+    await alert1.present();
+  }
+
+  async alertaMorteBixinho() {
+    const alert1 = await this.alertController.create({
+      cssClass: 'meu_alertaModificarNomeBixinho',
+      header: 'x(',
+      message: ("SEU BIXINHO MORREU DE FOME! Mas não se preocupe, conseguimos revivê-lo! "+
+      "Só que ele perdeu 2 levels e toda a experiência acumulada daquele level"),
+      buttons: [
+        {
+          text: 'Ok',
+          handler: (res) => {
           },
         },
       ],

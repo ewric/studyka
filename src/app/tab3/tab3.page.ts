@@ -1,4 +1,4 @@
-import { Bixinho } from './../models/IBixinho.model';
+
 import { MeuBixinhoService } from './../services/meu-bixinho.service';
 
 import { IMeusHabitosService } from './../services/imeus-habitos.service';
@@ -33,7 +33,7 @@ export class Tab3Page {
   }
 
   verificaData(habito: any) {
-    if((Date.parse(habito.data.toISOString()) + 24*60*60*1000 - Date.now()) > 0){
+    if((Date.parse(habito.data.toISOString()) - Date.now()) > 0){
       return 1;
     }
     return 0;
@@ -57,14 +57,8 @@ export class Tab3Page {
         {
           text: 'Ok',
           handler: (res) => {
-            if (this.verificaData(this.iMeusHabitosService.listaHabitos[index])){
-              this.meuBixinhoService.bixinho.bomHabito();
-              console.log('Terminou tarefa em tempo habil!');
-            }
-            else{
-              this.meuBixinhoService.bixinho.mauHabito();
-              console.log('Tarefa atrasada!');
-            }
+            this.meuBixinhoService.bixinho.bomHabito();
+            console.log('Tarefa concluída: ', this.iMeusHabitosService.listaHabitos[index]);
             this.iMeusHabitosService.deletaHabito(index);
             this.meuBixinhoService.salvaDadosNoDB();
           },

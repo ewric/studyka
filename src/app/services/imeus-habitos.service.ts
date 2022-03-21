@@ -30,7 +30,7 @@ export class IMeusHabitosService  {
   }
 
   deletaHabito(index: number) {
-    console.log('deletar de lista habitos o index: ',index);
+    console.log('Deletando de lista habitos o habito: ',this.listaHabitos[index]);
     this.listaHabitos.splice(index,1);
     this.salvaHabitosNoDB();
   }

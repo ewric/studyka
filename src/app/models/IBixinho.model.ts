@@ -142,13 +142,18 @@ export class Bixinho {
 
 
   diminuiInapetenciaNoDecorrerDoTempo() {
+    let flag_morte = 0;
     const diffEmHoras = this.diffEmHorasDeDataPassadaParaAtual(this.ultimaReducaoInapetencia);
     if(diffEmHoras >= 1){
+      console.log('Inapetencia antes da atualizacao: ',this.inapetencia);
       this.diminuiInapetencia(diffEmHoras/100);
       this.diminuiFelicidade(diffEmHoras/100);
-      if(this.inapetencia <= 0) this.morte();
+      if(this.inapetencia <= 0) {this.morte(); flag_morte = 1;}
       this.ultimaReducaoInapetencia = new Date();
+      console.log('Quantidade de horas sem entrar:',diffEmHoras);
+      console.log('Inapetencia depois da atualizacao: ', this.inapetencia);
     }
+    return flag_morte;
   }
 
   verData() {
