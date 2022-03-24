@@ -1,49 +1,44 @@
-(   ) Ajeitar o símbolo e nome das tabs no menu de tabs.
+( ok ) Ajeitar o sï¿½mbolo e nome das tabs no menu de tabs.
 --------------------------------------------------------------
 
-Tab 1 métodos de estudo
+Tab 1 mï¿½todos de estudo
 
-(   ) Criar thumbnails para vários métodos de estudo
+(   ) Criar thumbnails para vï¿½rios mï¿½todos de estudo
 (   ) Ao clicar nas thumbnails, abrir ion-slide
-(   ) Adicionar a cada ion-slide a explicação sobre aquele método de estudo
+(   ) Adicionar a cada ion-slide a explicaï¿½ï¿½o sobre aquele mï¿½todo de estudo
 
 --------------------------------------------------------------
 Tab 2 - meu studyka (nome do bixinho)
 
-( ok ) Criar um giff utilizando 3 imagens svg, este giff é o bixinho.
-( ok ) Modificar o código para que possam ser utilizados vários aparências de bixinhos.
-( ok ) Criar uma classe contendo as informacoes do bixinho do usuário. E exibir as informações e barras necessárias de forma adequada.
-O bixinho terá barra de fome.
-O bixinho terá barra de felicidade.
-O bixinho terá sua experiência exibida com 2 casas decimais.
-O bixinho terá seu level exibido.
-O dinheiro será exibido nesta tela.
+( ok ) Criar um giff utilizando 3 imagens svg, este giff ï¿½ o bixinho.
+( ok ) Modificar o cï¿½digo para que possam ser utilizados vï¿½rios aparï¿½ncias de bixinhos.
+( ok ) Criar uma classe contendo as informacoes do bixinho do usuï¿½rio. E exibir as informaï¿½ï¿½es e barras necessï¿½rias de forma adequada.
+O bixinho terï¿½ barra de fome.
+O bixinho terï¿½ barra de felicidade.
+O bixinho terï¿½ sua experiï¿½ncia exibida com 2 casas decimais.
+O bixinho terï¿½ seu level exibido.
+O dinheiro serï¿½ exibido nesta tela.
 A barra de fome diminui com o passar do tempo.
 A barra de fome aumenta quando se compra comida.
-A barra de felicidade aumenta quando se compra brinquedo ou quando se pratica bons hábitos.
-A barra de felicidade diminui como tempo e quando se pratica maus hábitos.
-A barra de experiência aumenta junto da barra de felicidade quando esta está acima de 80%.
-O level aumenta quando o limite de experiência daquele level é alcançado.
-O limite de experiência daquele level deve ser aumentado de acordo com o aumento do level.
-Pena de morte: Se o bixinho zerar a barra de fome ou de felicidade, ocorre a pena de morte. Nela, o bixinho perde 2 levels e a experiência é zerada. Se o bixinho voltar para o level 1, o dinheiro retorna ao valor inicial.
-No início do jogo, um valor de dinheiro inicial é alocado ao usuário.
-O dinheiro aumenta quando bons hábitos são praticados.
-(   ) Salvar o bixinho no sqlite storage.
+A barra de felicidade aumenta quando se compra brinquedo ou quando se pratica bons hï¿½bitos.
+A barra de felicidade diminui como tempo e quando se pratica maus hï¿½bitos.
+A barra de experiï¿½ncia aumenta junto da barra de felicidade quando esta estï¿½ acima de 80%.
+O level aumenta quando o limite de experiï¿½ncia daquele level ï¿½ alcanï¿½ado.
+O limite de experiï¿½ncia daquele level deve ser aumentado de acordo com o aumento do level.
+Pena de morte: Se o bixinho zerar a barra de fome ou de felicidade, ocorre a pena de morte. Nela, o bixinho perde 2 levels e a experiï¿½ncia ï¿½ zerada. Se o bixinho voltar para o level 1, o dinheiro retorna ao valor inicial.
+No inï¿½cio do jogo, um valor de dinheiro inicial ï¿½ alocado ao usuï¿½rio.
+O dinheiro aumenta quando bons hï¿½bitos sï¿½o praticados.
+( ~ ) Salvar o bixinho no sqlite storage.
 --------------------------------------------------------------
-Tab 3 - Registro de bons hábitos e maus hábitos
-(   ) Botão para registrar um bom hábito
-(   ) Botão para registrar mau hábito
-(   ) Exibição dos bons hábitos e maus hábitos
-(   ) Bons hábitos e maus hábitos clicáveis para se poder executar as funções da classe do bixinho.
+Tab 3 - Registro de bons hï¿½bitos e maus hï¿½bitos
+( ok ) Botï¿½o para registrar um bom hï¿½bito
+( ok ) Botï¿½o para registrar mau hï¿½bito
+( ok ) Exibiï¿½ï¿½o dos bons hï¿½bitos e maus hï¿½bitos
+( ok ) Bons hï¿½bitos e maus hï¿½bitos clicï¿½veis para se poder executar as funï¿½ï¿½es da classe do bixinho.
+( ok ) Criar icones de comida e brinquedos com o valor ao lado.
+( ok ) Icones clicaveis executando funcao de alimentacao o de aumento de felicidade da classe bixinho.
+--------------------------------------------------------------
 
---------------------------------------------------------------
-Tab 4 - loja de itens e brinquedos
-( ok ) Criar esta tab de forma a funcionar como as demais.
-(   ) Exibir dinheiro nesta tela em local apropriado.
-(   ) Criar icones de comida e brinquedos com o valor ao lado.
-(   ) Icones clicaveis executando funcao de alimentacao o de aumento de felicidade da classe bixinho.
-
---------------------------------------------------------------
 
 
 
