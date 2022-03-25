@@ -1,7 +1,7 @@
 
 import { MeuBixinhoService } from './../services/meu-bixinho.service';
 import { IMeusHabitosService } from './../services/imeus-habitos.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 
 @Component({
@@ -9,7 +9,7 @@ import { AlertController } from '@ionic/angular';
   templateUrl: 'tab3.page.html',
   styleUrls: ['tab3.page.scss']
 })
-export class Tab3Page {
+export class Tab3Page implements OnInit {
   registronovapagina = '../../registrarhabito';
   indexOfelement: number;
   constructor(
@@ -21,7 +21,7 @@ export class Tab3Page {
 
 
 
-  ionViewDidEnter() {
+  ngOnInit(): void {
     this.iMeusHabitosService.carregaHabitosDoDB();
     this.organizaDatas();
   }
@@ -84,7 +84,9 @@ export class Tab3Page {
         {
           text: 'Ok',
           handler: (res) => {
+            console.log('oi');
             this.iMeusHabitosService.deletaHabito(index);
+            console.log('oi');
           },
         },
       ],

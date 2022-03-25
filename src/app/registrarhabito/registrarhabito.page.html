@@ -14,8 +14,9 @@
     <ion-input [(ngModel)]="habito.texto"></ion-input>
   </ion-item>
 
-  <ion-datetime presentation="date" [(ngModel)]="data" ></ion-datetime>
+  <ion-datetime size="cover" presentation="date" [(ngModel)]="data" ></ion-datetime>
 
+  <br>
   <ion-button (click)="guardarHabito()" expand="block">
     Salvar Tarefa
   </ion-button>
