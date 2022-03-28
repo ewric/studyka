@@ -7,5 +7,16 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" [scrollY]="false">
+  <ion-list>
+    <ion-item *ngFor="let metodo of metododeestudoService.listaMetodos; let indexOfelement = index;" [color]='metodo.color'>
+      <ion-avatar slot="start">
+        <img [src]="metodo.figuracapa">
+      </ion-avatar>
+      <ion-label (click)="metododeestudoService.carregaMetodo(indexOfelement)" class="ion-text-wrap">
+        {{metodo.nome}}
+      </ion-label>
+    </ion-item>
+
+  </ion-list>
 </ion-content>
 

@@ -8,6 +8,10 @@ const routes: Routes = [
   },  {
     path: 'registrarhabito',
     loadChildren: () => import('./registrarhabito/registrarhabito.module').then( m => m.RegistrarhabitoPageModule)
+  },
+  {
+    path: 'slidemetodos',
+    loadChildren: () => import('./slidemetodos/slidemetodos.module').then( m => m.SlidemetodosPageModule)
   }
 
 

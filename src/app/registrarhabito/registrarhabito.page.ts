@@ -15,8 +15,8 @@ export class RegistrarhabitoPage implements OnInit {
   public habito = new Habito();
   constructor(
     private iMeusHabitosService: IMeusHabitosService,
-     private router: Router,
-     private alertController: AlertController) {}
+    private router: Router,
+    private alertController: AlertController) {}
 
 
   ngOnInit() {

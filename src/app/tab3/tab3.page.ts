@@ -9,7 +9,7 @@ import { AlertController } from '@ionic/angular';
   templateUrl: 'tab3.page.html',
   styleUrls: ['tab3.page.scss']
 })
-export class Tab3Page implements OnInit {
+export class Tab3Page {
   registronovapagina = '../../registrarhabito';
   indexOfelement: number;
   constructor(
@@ -21,7 +21,7 @@ export class Tab3Page implements OnInit {
 
 
 
-  ngOnInit(): void {
+  ionViewWillEnter() {
     this.iMeusHabitosService.carregaHabitosDoDB();
     this.organizaDatas();
   }
@@ -84,9 +84,7 @@ export class Tab3Page implements OnInit {
         {
           text: 'Ok',
           handler: (res) => {
-            console.log('oi');
             this.iMeusHabitosService.deletaHabito(index);
-            console.log('oi');
           },
         },
       ],

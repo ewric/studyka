@@ -1,3 +1,4 @@
+import { MetododeestudoService } from './../services/metododeestudo.service';
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @typescript-eslint/quotes */
 import { Component } from '@angular/core';
@@ -11,6 +12,7 @@ import { Component } from '@angular/core';
 
 
 export class Tab1Page {
-  constructor(){}
+  constructor(public metododeestudoService: MetododeestudoService){}
+
 
 }
